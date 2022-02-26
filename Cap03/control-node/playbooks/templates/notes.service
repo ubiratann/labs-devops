@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=app
 WorkingDirectory=/opt/notes
-ExecStart=/usr/java -jar -Djava.awt.headless=true -Djava.security.egd=file:/dev/./unradom /opt/notes/callicoder/easy-notes-{{appversion.stdout}}.jar
+ExecStart=/usr/java -jar -Djava.awt.headless=true -Djava.security.egd=file:/dev/./unradom /opt/notes/easy-notes-{{appversion.stdout}}.jar
 SyslogIdentifier=notes-%i
 
 [Install]
