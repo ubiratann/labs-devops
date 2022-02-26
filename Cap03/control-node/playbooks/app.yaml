@@ -27,14 +27,6 @@
       user:
         name: app
         uid: 500
-    - name: Instalar maven
-      apt:
-        name: maven
-        state: latest
-    - name: Instalar java versao 1.8
-      apt:
-        name: java-1.8.0-open-jdk
-        state: latest
     - name: Criar pasta da aplicacao
       file:
         path: /opt/notes
@@ -71,6 +63,9 @@
 
   roles:
     - configuracao-so
+    - role: codeyourinfra.maven
+      vars:
+        use_latest_version: True
 
   handlers:
     - name: reload daemon
