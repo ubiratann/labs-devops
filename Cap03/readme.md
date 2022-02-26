@@ -4,7 +4,7 @@
 
 <br>
 
-### Controll nodes
+### Control nodes
 
 É onde será instalado e configurado o Ansible, é onde são executados os comandos pleo sysadmin.
 
