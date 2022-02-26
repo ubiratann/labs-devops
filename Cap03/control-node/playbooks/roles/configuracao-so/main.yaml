@@ -1,0 +1,9 @@
+- name: Atualizacao dos pacotes
+  apt:
+    name: "*"
+    state: latest
+
+- name: Instalacao do git cli
+  apt:
+    name: git
+    state: latest
