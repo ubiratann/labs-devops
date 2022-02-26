@@ -1,22 +1,24 @@
 ---
 - name: Configurar server Java
-  host: app01
+  hosts: app01
 
   user: vagrant
   become: yes
 
+  vars_files:
+    vars/main.yaml
   vars:
     - dbhost: "db01"
     - dbname: "notes"
     - dbusername: "notesapp"
     - dbpassword: 1234
-  
+
   tasks:
     - name: Configurar hosts
-      lineinfile: 
+      lineinfile:
         dest: /etc/hosts
         state: present
-        line: "{{item}}" 
+        line: "{{item}}"
       with_items:
         - "{{networkbaseip}}.2 control-node"
         - "{{networkbaseip}}.3 app01"
@@ -66,11 +68,11 @@
       service:
         name: notes
         state: restarted
-  
+
   roles:
     - configuracao-so
 
   handlers:
-    name: reload daemon
-    systemd:
-      daemon_reexec: yes
+    - name: reload daemon
+      systemd:
+        daemon_reexec: yes
