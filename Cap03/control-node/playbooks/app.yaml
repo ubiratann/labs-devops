@@ -41,7 +41,7 @@
         force: yes
     - name: Copiar arquivo de template
       template:
-        source: application.properties
+        src: application.properties
         dest: /opt/notes/src/main/resources/application.properties
     - name: Gerar pacote
       become_user: app
