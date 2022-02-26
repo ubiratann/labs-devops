@@ -1,0 +1,19 @@
+#Variaveis de rede
+networkbaseip: 192.167.1
+
+#Variaveis do host banco de dados
+dbname: db001
+dbusername: root
+dbpassword: 1234
+
+#Variaveis do baco de dados
+mysql_root_password: 1234
+mysql_databases:
+  - name: notes
+    encoding: latin1
+    collation: latin_general_cli
+mysql_users:
+  - name: notesapp
+    host: "%"
+    password: 1234
+    priv: "notes.*:ALL"
