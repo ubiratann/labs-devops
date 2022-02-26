@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# sudo yum -y install epel-release
-# sudo yum -y install ansible
 sudo apt install ansible -y
 cat << EOT >> /etc/hosts
 192.167.1.2 control-node
