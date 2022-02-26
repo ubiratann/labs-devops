@@ -1,0 +1,22 @@
+---
+- name: Configura banco de dados
+  hosts: db01
+  
+  user: vagrant
+  become: yes #flag para aceitar ações como root
+
+  vars_files:
+    - vars/main.yaml
+  
+  tasks:
+    - name: Configurar hosts
+      lineinfile: line "{{item}}" path=/etc/hosts
+      with_items:
+        - "{{networkbaseip}}.2 control-node"
+        - "{{networkbaseip}}.3 db01"
+        - "{{networkbaseip}}.4 app01"
+  
+  roles:
+    - configuracao-so
+    - role: geerlingguy.mysql 
+
