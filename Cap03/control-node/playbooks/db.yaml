@@ -13,8 +13,8 @@
       lineinfile: line "{{item}}" path=/etc/hosts
       with_items:
         - "{{networkbaseip}}.2 control-node"
-        - "{{networkbaseip}}.3 db01"
-        - "{{networkbaseip}}.4 app01"
+        - "{{networkbaseip}}.3 app01"
+        - "{{networkbaseip}}.4 db01"
   
   roles:
     - configuracao-so
