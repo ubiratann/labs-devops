@@ -1,0 +1,55 @@
+---
+- name: Configurar server Java
+  host: app01
+
+  user: vagrant
+  become: yes
+
+  vars:
+    - dbhost: "db01"
+    - dbname: "notes"
+    - dbusername: "notesapp"
+    - dbpassword: 1234
+  
+  tasks:
+    - name: Configurar hosts
+      lineinfile: 
+        dest: /etc/hosts
+        state: present
+        line: "{{item}}" 
+      with_items:
+        - "{{networkbaseip}}.2 control-node"
+        - "{{networkbaseip}}.3 app01"
+        - "{{networkbaseip}}.4 db01"
+    - name: Adicionar usuario app
+      user:
+        name: app
+        uid: 500
+    - name: Instalar maven
+      apt:
+        name: maven
+        state: latest
+    - name: Instalar java versao 1.8
+      apt:
+        name: java-1.8.0-open-jdk
+        state: latest
+    - name: Criar pasta da aplicacao
+      file:
+        path: /opt/notes
+        state: directory
+        owner: app
+        group: app
+    - name: Clonar repositorio
+      git:
+        repo: "https://github.com/callicoder/spring-boot-mysql-rest-api-tutorial.git"
+        dest: /opt/notes
+        clone: yes
+        force: yes
+    - name: Copiar arquivo de template
+      template:
+        source: application.properties
+        dest: /opt/notes/src/main/resources/application.properties
+    - name: Gerar pacote
+      become_user: app
+      command: mvn -f /opt/notes/pom.xml package
+
