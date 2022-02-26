@@ -10,7 +10,10 @@
   
   tasks:
     - name: Configurar hosts
-      lineinfile: line "{{item}}" path=/etc/hosts
+      lineinfile: 
+        dest: /etc/hosts
+        state: present
+        line: "{{item}}" 
       with_items:
         - "{{networkbaseip}}.2 control-node"
         - "{{networkbaseip}}.3 app01"
