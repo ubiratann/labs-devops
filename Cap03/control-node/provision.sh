@@ -27,6 +27,7 @@ EOT
 
 echo "Instalando dependencias ansible"
 ansible-galaxy collection install community.general
+ansible0galaxy role install geerlingguy.mysql
 
 echo "Gerando chave publica"
 #gerando chave compartilhada
