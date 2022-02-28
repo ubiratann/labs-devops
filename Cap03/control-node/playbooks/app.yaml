@@ -54,7 +54,7 @@
     - name: Setando versao correta do java
       community.general.alternatives:
         name: java
-        path: /usr/lib/jvm/java-1.11-openjdk-amd64/jre/bin/java
+        path: /usr/lib/jvm/java-1.11-openjdk-amd64/bin/java
     - name: Instalar maven
       apt:
         name: maven
