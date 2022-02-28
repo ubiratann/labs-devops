@@ -1,3 +1,4 @@
 .vagrant/
 .ssh/
 *.log
+id_rsa.pub
