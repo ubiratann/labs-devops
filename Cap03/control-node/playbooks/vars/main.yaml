@@ -2,8 +2,9 @@
 networkbaseip: 192.167.1
 
 #Variaveis do host banco de dados
-dbname: db001
-dbusername: root
+dbhost: "db01"
+dbname: "notes"
+dbusername: "notesapp"
 dbpassword: 1234
 
 #Variaveis do baco de dados
