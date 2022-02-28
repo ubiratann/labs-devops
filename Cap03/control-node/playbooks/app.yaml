@@ -7,11 +7,6 @@
 
   vars_files:
     vars/main.yaml
-  vars:
-    - dbhost: "db01"
-    - dbname: "notes"
-    - dbusername: "notesapp"
-    - dbpassword: 1234
 
   tasks:
     - name: Configurar hosts
@@ -54,7 +49,7 @@
     - name: Setando versao correta do java
       community.general.alternatives:
         name: java
-        path: /usr/lib/jvm/java-1.11-openjdk-amd64/bin/java
+        path: /usr/lib/jvm/java-1.11.0-openjdk-amd64/bin/java
     - name: Instalar maven
       apt:
         name: maven
