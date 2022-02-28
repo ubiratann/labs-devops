@@ -25,6 +25,9 @@ app01
 db01
 EOT
 
+echo "Instalando dependencias ansible"
+ansible-galaxy collection install community.general
+
 echo "Gerando chave publica"
 #gerando chave compartilhada
 ssh-keygen -t rsa -N '' -f /home/vagrant/.ssh/id_rsa -C "vagrant@control-node"
