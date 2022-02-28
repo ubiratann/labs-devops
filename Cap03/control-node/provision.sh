@@ -16,6 +16,15 @@ cat << EOT >> /etc/hosts
 192.167.1.4 db01
 EOT
 
+echo "Adicionando hosts ansible"
+#editando arquivo de hosts
+cat << EOT >> /etc/ansible/hosts
+[app]
+app01
+[db]
+db01
+EOT
+
 echo "Gerando chave publica"
 #gerando chave compartilhada
 ssh-keygen -t rsa -N '' -f /home/vagrant/.ssh/id_rsa -C "vagrant@control-node"
