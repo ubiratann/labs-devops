@@ -23,13 +23,17 @@
         - "{{networkbaseip}}.2 control-node"
         - "{{networkbaseip}}.3 app01"
         - "{{networkbaseip}}.4 db01"
+    - name: Adicionar grupo app
+      group:
+        name: app
     - name: Adicionar usuario app
       user:
         name: app
+        group: app
         uid: 500
     - name: Criar pasta da aplicacao
       file:
-        path: /opt/notes
+        path: /opt/notes/
         state: directory
         owner: app
         group: app
@@ -43,7 +47,20 @@
       template:
         src: application.properties
         dest: /opt/notes/src/main/resources/application.properties
+    - name: Instalar java jdk-11
+      apt: 
+        name: openjdk-11-jdk-headless
+        state: latest
+    - name: Setando versao correta do java
+      community.general.alternatives:
+        name: java
+        path: /usr/lib/jvm/java-1.11-openjdk-amd64/jre/bin/java
+    - name: Instalar maven
+      apt:
+        name: maven
+        state: latest
     - name: Gerar pacote
+      become: yes
       become_user: app
       command: mvn -f /opt/notes/pom.xml package
     - name: Registrar versao do aplicativo
@@ -63,9 +80,6 @@
 
   roles:
     - configuracao-so
-    - role: codeyourinfra.maven
-      vars:
-        use_latest_version: True
 
   handlers:
     - name: reload daemon
