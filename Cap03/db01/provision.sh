@@ -1,6 +1,0 @@
-#!/bin/sh
-
-#adiciona chave publica do control node
-cat << EOF >> /home/vagrant/.ssh/authorized_keys
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4gyxvMKv25DwmBbcxSXk3PJMXzOpysuohh1jj5cQszq716mUFMWC9O9SszRvtmLYQZqJOEfrt+lfYWgdkPAfmAJTEZii2Sj+G7ktEv0m3xEmrnKv75nUEjJ6Yyrq0a7LtBxzqjw/ihL8c0/PccksVonZSiFNua8Esr50ZN6B2AlbSpkRwITcdywe5zRUBXHUP4SJ7CsHNv/JAKSHo6kBFcdFmUJA0FwVtw+LF7O7EXPQ2bMWX3bD4h7A4yjLPnLJt+68VNSzNSjLjE94+QkjVy7+tw/mByb5tbBWcS9EJ1DQ0V2NVne5dZEDUBziX/7gZ4nXLSF/Rx4MW6Mcv1vFb vagrant@control-node
-EOF
